@@ -2,8 +2,8 @@
 
 A modern, responsive Instagram UI Clone built using HTML5, CSS3, and Vanilla JavaScript. This project recreates the look and feel of Instagram's homepage with a clean interface, responsive layout, interactive components, and smooth animations.
 
-Live Demo: https://your-username.github.io/instagram-clone/
-GitHub Repository: https://github.com/your-username/instagram-clone
+Live Demo: 
+GitHub Repository:https://github.com/VaraPrasad-225/Instagram-Clone/tree/main
 
 🚀 Features
 Responsive Instagram-inspired UI
