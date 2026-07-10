@@ -2,7 +2,7 @@
 
 A modern, responsive Instagram UI Clone built using HTML5, CSS3, and Vanilla JavaScript. This project recreates the look and feel of Instagram's homepage with a clean interface, responsive layout, interactive components, and smooth animations.
 
-Live Demo: 
+Live Demo: https://varaprasad-225.github.io/Instagram-Clone/
 GitHub Repository:https://github.com/VaraPrasad-225/Instagram-Clone/tree/main
 
 🚀 Features
@@ -78,8 +78,8 @@ All code was reviewed, understood, modified, and integrated by me.
 
 Madduri Vara Prasad
 
-GitHub: https://github.com/your-username
-LinkedIn: https://linkedin.com/in/your-profile
+GitHub:https://github.com/VaraPrasad-225 
+LinkedIn: https://www.linkedin.com/in/vara-prasad-madduri-javadeveloper?utm_source=share_via&utm_content=profile&utm_medium=member_android
 📜 License
 
 This project is created for educational and portfolio purposes only.
