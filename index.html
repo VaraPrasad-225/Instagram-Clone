@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A premium Instagram-inspired social media UI clone built with HTML5, CSS3, and vanilla JavaScript.">
+  <meta name="keywords" content="Instagram clone, social media UI, HTML CSS JavaScript, frontend portfolio">
+  <meta name="author" content="Frontend Developer">
+  <meta name="theme-color" content="#e1306c">
+  <title>Instagram Clone | Modern Social Feed UI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-home" viewBox="0 0 24 24"><path d="m3 10.8 9-7 9 7v9.2a1 1 0 0 1-1 1h-5.2v-6.2H9.2V21H4a1 1 0 0 1-1-1v-9.2Z"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35"/><circle cx="11" cy="11" r="7"/></symbol>
+    <symbol id="icon-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m15.2 8.8-1.8 4.6-4.6 1.8 1.8-4.6 4.6-1.8Z"/></symbol>
+    <symbol id="icon-reels" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="4"/><path d="m8 4 3 5M14 4l3 5M3 9h18M10 13.5l4.5 2.6-4.5 2.6v-5.2Z"/></symbol>
+    <symbol id="icon-message" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.2 9.2 0 0 1-3.6-.8L3 21l1.8-5.1A8.1 8.1 0 0 1 4 12a8.5 8.5 0 0 1 17-.5Z"/></symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 1 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"/></symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><path d="M12 8v8M8 12h8"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="icon-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></symbol>
+    <symbol id="icon-comment" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-8 8H6l-3 2 1.2-4.1A8 8 0 1 1 21 12Z"/></symbol>
+    <symbol id="icon-send" viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></symbol>
+    <symbol id="icon-bookmark" viewBox="0 0 24 24"><path d="M6 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18l-6-3.5L6 22V4Z"/></symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></symbol>
+  </svg>
+
+  <div class="loader" id="loader" role="status" aria-live="polite">
+    <span class="loader__ring" aria-hidden="true"></span>
+    <p>Loading feed</p>
+  </div>
+
+  <a class="skip-link" href="#feed">Skip to feed</a>
+
+  <header class="mobile-header" aria-label="Mobile navigation">
+    <a class="brand-lockup" href="#home" aria-label="InstaClone home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" role="img">
+          <rect x="10" y="10" width="28" height="28" rx="9"></rect>
+          <circle cx="24" cy="24" r="7"></circle>
+          <circle cx="32" cy="16" r="2.4"></circle>
+        </svg>
+      </span>
+      <span class="brand-word">InstaClone</span>
+    </a>
+
+    <button class="icon-button" id="menuButton" type="button" aria-label="Open menu" aria-expanded="false">
+      <svg><use href="#icon-menu"></use></svg>
+    </button>
+  </header>
+
+  <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+    <div class="sidebar__main">
+      <a class="brand-lockup sidebar__brand" href="#home" aria-label="InstaClone home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="img">
+            <rect x="10" y="10" width="28" height="28" rx="9"></rect>
+            <circle cx="24" cy="24" r="7"></circle>
+            <circle cx="32" cy="16" r="2.4"></circle>
+          </svg>
+        </span>
+        <span class="brand-word">InstaClone</span>
+      </a>
+
+      <nav class="nav" aria-label="Main menu">
+        <a class="nav__link active" href="#home" data-nav-link><svg><use href="#icon-home"></use></svg><span>Home</span></a>
+        <a class="nav__link" href="#search" data-nav-link><svg><use href="#icon-search"></use></svg><span>Search</span></a>
+        <a class="nav__link" href="#explore" data-nav-link><svg><use href="#icon-compass"></use></svg><span>Explore</span></a>
+        <a class="nav__link" href="#reels" data-nav-link><svg><use href="#icon-reels"></use></svg><span>Reels</span></a>
+        <a class="nav__link" href="#messages" data-nav-link><svg><use href="#icon-message"></use></svg><span>Messages</span></a>
+        <a class="nav__link" href="#notifications" data-nav-link><svg><use href="#icon-heart"></use></svg><span>Notifications</span></a>
+        <a class="nav__link" href="#create" data-nav-link><svg><use href="#icon-plus"></use></svg><span>Create</span></a>
+        <a class="nav__link" href="#profile" data-nav-link><img src="assets/profiles/avery.jpg" alt="" loading="lazy"><span>Profile</span></a>
+      </nav>
+    </div>
+
+    <div class="sidebar__footer">
+      <button class="nav__link nav__link--button theme-switch" id="themeToggle" type="button" aria-label="Toggle dark and light mode" aria-pressed="false">
+        <svg><use href="#icon-moon"></use></svg><span>Dark mode</span>
+      </button>
+      <button class="nav__link nav__link--button" type="button" aria-label="More options">
+        <svg><use href="#icon-menu"></use></svg><span>More</span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="overlay" id="overlay" hidden></div>
+
+  <main class="app-shell" id="home">
+    <section class="feed-column" id="feed" aria-label="Main feed">
+      <section class="stories-card reveal" aria-labelledby="stories-title">
+        <div class="section-heading">
+          <h1 id="stories-title">Stories</h1>
+          <p>Fresh updates from creators you follow</p>
+        </div>
+
+        <div class="stories__scroll" aria-label="Stories carousel">
+          <article class="story"><button type="button" aria-label="Open Avery story"><img src="assets/stories/avery.jpg" alt="Avery story" loading="lazy"></button><p>Avery</p></article>
+          <article class="story"><button type="button" aria-label="Open Niko story"><img src="assets/stories/niko.jpg" alt="Niko story" loading="lazy"></button><p>Niko</p></article>
+          <article class="story"><button type="button" aria-label="Open Mila story"><img src="assets/stories/mila.jpg" alt="Mila story" loading="lazy"></button><p>Mila</p></article>
+          <article class="story story--viewed"><button type="button" aria-label="Open Kai story"><img src="assets/stories/kai.jpg" alt="Kai story" loading="lazy"></button><p>Kai</p></article>
+          <article class="story"><button type="button" aria-label="Open Lena story"><img src="assets/stories/lena.jpg" alt="Lena story" loading="lazy"></button><p>Lena</p></article>
+          <article class="story"><button type="button" aria-label="Open Theo story"><img src="assets/stories/theo.jpg" alt="Theo story" loading="lazy"></button><p>Theo</p></article>
+          <article class="story story--viewed"><button type="button" aria-label="Open Iris story"><img src="assets/stories/iris.jpg" alt="Iris story" loading="lazy"></button><p>Iris</p></article>
+          <article class="story"><button type="button" aria-label="Open Sora story"><img src="assets/stories/sora.jpg" alt="Sora story" loading="lazy"></button><p>Sora</p></article>
+        </div>
+      </section>
+
+      <section class="posts" aria-label="Posts">
+        <article class="post-card reveal" id="explore">
+          <header class="post-header">
+            <a class="profile-line" href="#profile"><img src="assets/profiles/avery.jpg" alt="Avery Stone profile" loading="lazy"><span><strong>avery.stone <span class="verified" aria-label="Verified account"><svg><use href="#icon-check"></use></svg></span></strong><small>Lisbon, Portugal</small></span></a>
+            <button class="icon-button" type="button" aria-label="Post options"><svg><use href="#icon-more"></use></svg></button>
+          </header>
+          <figure class="post-media"><img src="assets/posts/apartment.jpg" alt="Sunlit modern apartment interior" loading="lazy" data-double-like></figure>
+          <div class="post-body">
+            <div class="post-actions"><div class="post-actions__left"><button class="action-button" type="button" aria-label="Like post" aria-pressed="false" data-like data-count="12840"><svg><use href="#icon-heart"></use></svg></button><button class="action-button" type="button" aria-label="Comment on post"><svg><use href="#icon-comment"></use></svg></button><button class="action-button" type="button" aria-label="Share post"><svg><use href="#icon-send"></use></svg></button></div><button class="action-button" type="button" aria-label="Save post" aria-pressed="false" data-save><svg><use href="#icon-bookmark"></use></svg></button></div>
+            <p class="liked-by"><img src="assets/profiles/mila.jpg" alt="" loading="lazy">Liked by <strong>mila.frames</strong> and <strong data-like-count>12,840 others</strong></p>
+            <p class="caption"><strong>avery.stone</strong> Golden light, calm textures, and a corner made for slow mornings.</p>
+            <a class="comments-link" href="#messages">View all 184 comments</a>
+            <form class="comment-form"><input type="text" placeholder="Add a comment..." aria-label="Add a comment"><button type="submit">Post</button></form>
+          </div>
+        </article>
+
+        <article class="post-card reveal" id="reels">
+          <header class="post-header"><a class="profile-line" href="#profile"><img src="assets/profiles/niko.jpg" alt="Niko Vale profile" loading="lazy"><span><strong>niko.moves <span class="verified" aria-label="Verified account"><svg><use href="#icon-check"></use></svg></span></strong><small>Dolomites, Italy</small></span></a><button class="icon-button" type="button" aria-label="Post options"><svg><use href="#icon-more"></use></svg></button></header>
+          <figure class="post-media"><img src="assets/posts/mountains.jpg" alt="Snowy mountain landscape at night" loading="lazy" data-double-like></figure>
+          <div class="post-body"><div class="post-actions"><div class="post-actions__left"><button class="action-button" type="button" aria-label="Like post" aria-pressed="false" data-like data-count="9472"><svg><use href="#icon-heart"></use></svg></button><button class="action-button" type="button" aria-label="Comment on post"><svg><use href="#icon-comment"></use></svg></button><button class="action-button" type="button" aria-label="Share post"><svg><use href="#icon-send"></use></svg></button></div><button class="action-button" type="button" aria-label="Save post" aria-pressed="false" data-save><svg><use href="#icon-bookmark"></use></svg></button></div><p class="liked-by"><img src="assets/profiles/avery.jpg" alt="" loading="lazy">Liked by <strong>avery.stone</strong> and <strong data-like-count>9,472 others</strong></p><p class="caption"><strong>niko.moves</strong> Clean air, quiet trails, and a sky full of stars.</p><a class="comments-link" href="#messages">View all 91 comments</a><form class="comment-form"><input type="text" placeholder="Add a comment..." aria-label="Add a comment"><button type="submit">Post</button></form></div>
+        </article>
+
+        <article class="post-card reveal" id="messages">
+          <header class="post-header"><a class="profile-line" href="#profile"><img src="assets/profiles/mila.jpg" alt="Mila Chen profile" loading="lazy"><span><strong>mila.frames <span class="verified" aria-label="Verified account"><svg><use href="#icon-check"></use></svg></span></strong><small>Kyoto, Japan</small></span></a><button class="icon-button" type="button" aria-label="Post options"><svg><use href="#icon-more"></use></svg></button></header>
+          <figure class="post-media"><img src="assets/posts/kyoto.jpg" alt="Traditional Kyoto street at dusk" loading="lazy" data-double-like></figure>
+          <div class="post-body"><div class="post-actions"><div class="post-actions__left"><button class="action-button" type="button" aria-label="Like post" aria-pressed="false" data-like data-count="22619"><svg><use href="#icon-heart"></use></svg></button><button class="action-button" type="button" aria-label="Comment on post"><svg><use href="#icon-comment"></use></svg></button><button class="action-button" type="button" aria-label="Share post"><svg><use href="#icon-send"></use></svg></button></div><button class="action-button" type="button" aria-label="Save post" aria-pressed="false" data-save><svg><use href="#icon-bookmark"></use></svg></button></div><p class="liked-by"><img src="assets/profiles/iris.jpg" alt="" loading="lazy">Liked by <strong>iris.nova</strong> and <strong data-like-count>22,619 others</strong></p><p class="caption"><strong>mila.frames</strong> Blue hour made the whole street feel cinematic.</p><a class="comments-link" href="#messages">View all 312 comments</a><form class="comment-form"><input type="text" placeholder="Add a comment..." aria-label="Add a comment"><button type="submit">Post</button></form></div>
+        </article>
+
+        <article class="post-card reveal" id="notifications">
+          <header class="post-header"><a class="profile-line" href="#profile"><img src="assets/profiles/kai.jpg" alt="Kai Morgan profile" loading="lazy"><span><strong>kai.designs <span class="verified" aria-label="Verified account"><svg><use href="#icon-check"></use></svg></span></strong><small>Copenhagen, Denmark</small></span></a><button class="icon-button" type="button" aria-label="Post options"><svg><use href="#icon-more"></use></svg></button></header>
+          <figure class="post-media"><img src="assets/posts/studio.jpg" alt="Bright creative studio workspace" loading="lazy" data-double-like></figure>
+          <div class="post-body"><div class="post-actions"><div class="post-actions__left"><button class="action-button" type="button" aria-label="Like post" aria-pressed="false" data-like data-count="6452"><svg><use href="#icon-heart"></use></svg></button><button class="action-button" type="button" aria-label="Comment on post"><svg><use href="#icon-comment"></use></svg></button><button class="action-button" type="button" aria-label="Share post"><svg><use href="#icon-send"></use></svg></button></div><button class="action-button" type="button" aria-label="Save post" aria-pressed="false" data-save><svg><use href="#icon-bookmark"></use></svg></button></div><p class="liked-by"><img src="assets/profiles/theo.jpg" alt="" loading="lazy">Liked by <strong>theo.park</strong> and <strong data-like-count>6,452 others</strong></p><p class="caption"><strong>kai.designs</strong> New desk, sharper workflow, same overflowing notebook.</p><a class="comments-link" href="#messages">View all 57 comments</a><form class="comment-form"><input type="text" placeholder="Add a comment..." aria-label="Add a comment"><button type="submit">Post</button></form></div>
+        </article>
+
+        <article class="post-card reveal" id="create">
+          <header class="post-header"><a class="profile-line" href="#profile"><img src="assets/profiles/lena.jpg" alt="Lena Brooks profile" loading="lazy"><span><strong>lena.table <span class="verified" aria-label="Verified account"><svg><use href="#icon-check"></use></svg></span></strong><small>Paris, France</small></span></a><button class="icon-button" type="button" aria-label="Post options"><svg><use href="#icon-more"></use></svg></button></header>
+          <figure class="post-media"><img src="assets/posts/brunch.jpg" alt="Colorful brunch table with pastries" loading="lazy" data-double-like></figure>
+          <div class="post-body"><div class="post-actions"><div class="post-actions__left"><button class="action-button" type="button" aria-label="Like post" aria-pressed="false" data-like data-count="17902"><svg><use href="#icon-heart"></use></svg></button><button class="action-button" type="button" aria-label="Comment on post"><svg><use href="#icon-comment"></use></svg></button><button class="action-button" type="button" aria-label="Share post"><svg><use href="#icon-send"></use></svg></button></div><button class="action-button" type="button" aria-label="Save post" aria-pressed="false" data-save><svg><use href="#icon-bookmark"></use></svg></button></div><p class="liked-by"><img src="assets/profiles/noa.jpg" alt="" loading="lazy">Liked by <strong>noa.finch</strong> and <strong data-like-count>17,902 others</strong></p><p class="caption"><strong>lena.table</strong> Citrus, pastry flakes, and just enough espresso.</p><a class="comments-link" href="#messages">View all 143 comments</a><form class="comment-form"><input type="text" placeholder="Add a comment..." aria-label="Add a comment"><button type="submit">Post</button></form></div>
+        </article>
+
+        <article class="post-card reveal" id="profile">
+          <header class="post-header"><a class="profile-line" href="#profile"><img src="assets/profiles/iris.jpg" alt="Iris Nova profile" loading="lazy"><span><strong>iris.nova <span class="verified" aria-label="Verified account"><svg><use href="#icon-check"></use></svg></span></strong><small>Marrakesh, Morocco</small></span></a><button class="icon-button" type="button" aria-label="Post options"><svg><use href="#icon-more"></use></svg></button></header>
+          <figure class="post-media"><img src="assets/posts/courtyard.jpg" alt="Colorful tiled courtyard architecture" loading="lazy" data-double-like></figure>
+          <div class="post-body"><div class="post-actions"><div class="post-actions__left"><button class="action-button" type="button" aria-label="Like post" aria-pressed="false" data-like data-count="31608"><svg><use href="#icon-heart"></use></svg></button><button class="action-button" type="button" aria-label="Comment on post"><svg><use href="#icon-comment"></use></svg></button><button class="action-button" type="button" aria-label="Share post"><svg><use href="#icon-send"></use></svg></button></div><button class="action-button" type="button" aria-label="Save post" aria-pressed="false" data-save><svg><use href="#icon-bookmark"></use></svg></button></div><p class="liked-by"><img src="assets/profiles/sora.jpg" alt="" loading="lazy">Liked by <strong>sora.lee</strong> and <strong data-like-count>31,608 others</strong></p><p class="caption"><strong>iris.nova</strong> Pattern, sun, shadow, repeat.</p><a class="comments-link" href="#messages">View all 428 comments</a><form class="comment-form"><input type="text" placeholder="Add a comment..." aria-label="Add a comment"><button type="submit">Post</button></form></div>
+        </article>
+      </section>
+    </section>
+
+    <aside class="right-sidebar" id="search" aria-label="Suggestions and account">
+      <section class="account-card reveal">
+        <div class="profile-line profile-line--large"><img src="assets/profiles/avery.jpg" alt="Logged-in user profile" loading="lazy"><span><strong>avery.stone</strong><small>Creative Director</small></span></div>
+        <button class="text-button" type="button">Switch</button>
+      </section>
+
+      <section class="suggestions-card reveal" aria-labelledby="suggestions-title">
+        <div class="suggestions-card__header"><div><h2 id="suggestions-title">Suggested for you</h2><p>Handpicked creator accounts</p></div><button class="text-button" type="button">See all</button></div>
+        <article class="suggestion"><div class="profile-line"><img src="assets/profiles/theo.jpg" alt="Theo Park profile" loading="lazy"><span><strong>theo.park</strong><small>Followed by Mila + 8 others</small></span></div><button class="follow-button" type="button">Follow</button></article>
+        <article class="suggestion"><div class="profile-line"><img src="assets/profiles/sora.jpg" alt="Sora Lee profile" loading="lazy"><span><strong>sora.lee</strong><small>Followed by Kai + 3 others</small></span></div><button class="follow-button" type="button">Follow</button></article>
+        <article class="suggestion"><div class="profile-line"><img src="assets/profiles/june.jpg" alt="June Hart profile" loading="lazy"><span><strong>june.hart</strong><small>Followed by Iris + 12 others</small></span></div><button class="follow-button" type="button">Follow</button></article>
+        <article class="suggestion"><div class="profile-line"><img src="assets/profiles/noa.jpg" alt="Noa Finch profile" loading="lazy"><span><strong>noa.finch</strong><small>Followed by Niko + 5 others</small></span></div><button class="follow-button" type="button">Follow</button></article>
+      </section>
+
+      <footer class="site-footer reveal">
+        <nav aria-label="Footer links"><a href="#home">About</a><a href="#search">Help</a><a href="#profile">Privacy</a><a href="#explore">Terms</a><a href="#messages">Contact</a><a href="#home">Meta</a></nav>
+        <small>&copy; 2026 InstaClone. Educational UI project.</small>
+      </footer>
+    </aside>
+  </main>
+
+  <footer class="mobile-footer reveal" aria-label="Site footer">
+    <nav aria-label="Mobile footer links"><a href="#home">About</a><a href="#search">Help</a><a href="#profile">Privacy</a><a href="#explore">Terms</a><a href="#messages">Contact</a><a href="#home">Meta</a></nav>
+    <small>&copy; 2026 InstaClone. Educational UI project.</small>
+  </footer>
+
+  <button class="back-top" id="backTop" type="button" aria-label="Back to top">↑</button>
+  <script src="script.js" defer></script>
+</body>
+</html>
+
+
+
